@@ -1,5 +1,5 @@
 select query_name, round(avg(rating::float/position)::numeric, 2) as quality, 
-round((sum(case when rating < 3 then 1 else 0 end) * 100)/count(*)::numeric, 2) as poor_query_percentage
+round((avg(case when rating < 3 then 1 else 0 end) * 100)::numeric, 2) as poor_query_percentage
 from queries  
 where query_name is not null
 group by query_name
