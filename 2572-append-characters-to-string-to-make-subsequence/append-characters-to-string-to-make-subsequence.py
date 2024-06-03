@@ -7,4 +7,5 @@ class Solution:
             if s[first] == t[all_char]:
                 all_char += 1
             first += 1
+            
         return len(t) - all_char
