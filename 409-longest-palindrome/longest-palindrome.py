@@ -23,10 +23,9 @@ class Solution:
         if odd_count:
             final = even_num + one_count + max(odd_count)
             odd_count.remove(max(odd_count))
+            for odd_num in odd_count:
+                final += odd_num - 1
         else:
             final = even_num + one_count
-
-        for odd_num in odd_count:
-            final += odd_num - 1
 
         return final
