@@ -39,19 +39,3 @@ class Solution:
             for val in range(value):
                 final_common.append(key)
         return final_common
-        # one_length = []
-        # common_char = []
-
-        # for char in final:
-        #     if len(char) == 1:
-        #         one_length.append(char)
-        #     else:
-        #         temp_list = list(char)
-        #         for temp_char in temp_list:
-        #             common_char.append(temp_char)
-
-        # for one_char in one_length:
-        #     if one_char not in common_char:
-        #         common_char.append(one_char)
-            
-        # return common_char
