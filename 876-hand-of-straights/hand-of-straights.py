@@ -5,6 +5,13 @@ class Solution:
             return False
 
         card_count = Counter(hand)
+        # card_count = {}
+        # for num in hand:
+        #     if num not in card_count:
+        #         card_count[num] = 1
+        #     else:
+        #         card_count[num] += 1
+
         unique_cards = sorted(card_count.keys())
         
         for card in unique_cards:
