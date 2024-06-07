@@ -5,7 +5,7 @@ class Solution:
 
         for i, word in enumerate(sentence_list):
             for check_word in dictionary:
-                if check_word == word[:len(check_word)]:#word.startswith(check_word):
+                if check_word == word[:len(check_word)]:
                     sentence_list[i] = check_word
                     break
 
