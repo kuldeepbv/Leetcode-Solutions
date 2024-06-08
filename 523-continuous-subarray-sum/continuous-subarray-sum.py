@@ -10,10 +10,9 @@ class Solution:
             current_sum += num
             remainder = current_sum % k
 
-            if remainder in remainder_map:
-                if i - remainder_map[remainder] > 1:
-                    return True
-            else:
+            if remainder not in remainder_map:
                 remainder_map[remainder] = i
+            elif i - remainder_map[remainder] > 1:
+                    return True
 
         return False           
