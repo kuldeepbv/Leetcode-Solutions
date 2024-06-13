@@ -4,7 +4,7 @@ class Solution:
         seats.sort()
         count = 0
 
-        for i, seat in enumerate(seats):
-            count += abs(seat - students[i])
+        for i, stud in enumerate(students):
+            count += abs(stud - seats[i])
     
         return count
