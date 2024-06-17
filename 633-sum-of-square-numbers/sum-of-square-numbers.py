@@ -2,7 +2,7 @@ import math
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
         l = 0
-        r = math.ceil(math.sqrt(c))
+        r = math.floor(math.sqrt(c))
 
         while l <= r:
             curr_sum = (l * l) + (r * r)
