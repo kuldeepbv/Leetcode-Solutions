@@ -1,15 +1,8 @@
-with ranking_event_date as (
-    select *,
-    rank() over(partition by player_id order by event_date) as rnk
+with ranked_login as (
+    select player_id, event_date, rank() over(partition by player_id order by event_date) as login_rank
     from activity
-),
-first_log_in as (
-    select player_id, event_date 
-    from ranking_event_date 
-    where rnk = 1
 )
 
-select round(count(fli.player_id) / (select count(distinct player_id) from activity)::numeric, 2) as fraction
-from activity a
-join first_log_in fli on a.player_id = fli.player_id 
-where a.event_date - fli.event_date = 1
+select round(sum(case when rl1.event_date+1 = rl2.event_date then 1 else 0 end) / (select count(distinct player_id) from activity)::numeric, 2) as fraction 
+from ranked_login rl1
+left join ranked_login rl2 on rl1.player_id = rl2.player_id and rl1.login_rank = 1 and rl2.login_rank = 2
