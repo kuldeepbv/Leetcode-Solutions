@@ -1,11 +1,9 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        magazine_list = list(magazine)
-
         for char in ransomNote:
-            if char not in magazine_list:
+            if char not in magazine:
                 return False
             else:
-                magazine_list.remove(char)
+                magazine = magazine.replace(char, '', 1)
         
         return True
