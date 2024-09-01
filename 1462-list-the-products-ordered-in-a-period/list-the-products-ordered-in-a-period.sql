@@ -13,3 +13,5 @@ select p.product_name, so.unit
 from products p
 join sum_of_orders so on p.product_id = so.product_id
 where so.unit >= 100
+
+--select 
