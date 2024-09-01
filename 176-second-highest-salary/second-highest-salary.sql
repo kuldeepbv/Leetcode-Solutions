@@ -1,8 +1,12 @@
-with highest_salary as (
-    select id, rank() over(order by salary desc) as rnk
-    from employee
-)
+-- with highest_salary as (
+--     select id, rank() over(order by salary desc) as rnk
+--     from employee
+-- )
 
-select max(salary) as secondhighestsalary
+-- select max(salary) as secondhighestsalary
+-- from employee
+-- where id not in (select id from highest_salary where rnk = 1)
+
+select max(salary) as secondhighestsalary 
 from employee
-where id not in (select id from highest_salary where rnk = 1)
+where salary < (select max(salary) from employee)
