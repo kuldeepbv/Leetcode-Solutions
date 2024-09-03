@@ -1,10 +1,13 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        final = []
-        for i in range(len(numbers)):
-            next_num = target - numbers[i]
-            if next_num in numbers[i+1:]:
-                final.append(i+1)
-                final.append((numbers[i+1:].index(next_num)) + (i+2))
-                break
-        return final
+        left = 0
+        right = len(numbers) - 1
+        
+        while left < right:
+            temp_target = numbers[left] + numbers[right]
+            if temp_target > target:
+                right -= 1
+            elif temp_target < target:
+                left += 1
+            else:
+                return [left + 1, right + 1]
