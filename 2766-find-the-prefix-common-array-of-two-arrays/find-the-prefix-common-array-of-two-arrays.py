@@ -1,12 +1,14 @@
+from collections import Counter
 class Solution:
     def findThePrefixCommonArray(self, A: List[int], B: List[int]) -> List[int]:
         C = []
         for i in range(len(A)):
-            sort_A = sorted(A[:i+1])
-            sort_B = sorted(B[:i+1])
+            cnt_A = Counter(A[:i+1])
+            cnt_B = Counter(B[:i+1])
+            agg_cnt = cnt_A + cnt_B
             temp = 0
-            for i in range(len(sort_A)):
-                if sort_A[i] in sort_B:
+            for value in agg_cnt.values():
+                if value == 2:
                     temp += 1
             C.append(temp)
         return C
