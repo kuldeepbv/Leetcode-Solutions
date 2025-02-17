@@ -3,8 +3,8 @@ class Solution:
         final = {}
         for word in strs:
             sorted_word = ''.join(sorted(word))
-            if sorted_word not in final.keys():
+            if sorted_word not in final:
                 final[sorted_word] = [word]
             else:
                 final[sorted_word].append(word)
-        return final.values()
+        return list(final.values())
