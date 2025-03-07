@@ -11,16 +11,10 @@ class Solution:
                 else:
                     count[num] += 1
 
-        ans = []
-
-        for key,value in count.items():
-            if value == 2:
-                ans.append(key)
-                break
-
         for i in range(1,n+1):
             if i not in count:
-                ans.append(i)
-                break
+                missing = i
+            elif count[i] == 2:
+                repeat = i
 
-        return ans
+        return [repeat, missing]
