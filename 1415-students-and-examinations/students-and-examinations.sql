@@ -4,7 +4,8 @@ with all_sub as (
     cross join subjects
 )
 
-select als.student_id, als.student_name, als.subject_name, count(e.student_id) as attended_exams
-from all_sub als
-left join examinations e on als.student_id = e.student_id and als.subject_name = e.subject_name
-group by als.student_id, als.student_name, als.subject_name
+select all_sub.student_id, all_sub.student_name, all_sub.subject_name, count(e.subject_name) as attended_exams
+from all_sub
+left join examinations e on all_sub.student_id = e.student_id and all_sub.subject_name = e.subject_name
+group by all_sub.student_id, all_sub.student_name, all_sub.subject_name
+order by all_sub.student_id
