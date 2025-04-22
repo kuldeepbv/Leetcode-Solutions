@@ -1,9 +1,10 @@
-with year_rank as (
+with prod_rnk as (
     select *,
-    rank() over(partition by product_id order by year) as ranked_year
+    dense_rank() over(partition by product_id order by year) as rnk  
     from sales
 )
 
-select product_id, year as first_year, quantity, price
-from year_rank
-where ranked_year = 1
+select pr.product_id, pr.year as first_year, pr.quantity, pr.price
+from product p 
+join prod_rnk pr on p.product_id = pr.product_id
+where pr.rnk = 1
