@@ -1,3 +1,3 @@
 select name
 from employee
-where id in (select managerid from employee group by managerid having count(*) >= 5)
+where id in (select managerid from employee group by managerId having count(*) >= 5)
