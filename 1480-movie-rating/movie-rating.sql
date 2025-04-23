@@ -1,23 +1,16 @@
-with cts as (
-    select user_id, count(*) as cnt
-    from movierating
-    group by user_id
-),
-feb_ratings as (
-    select movie_id, avg(rating) as rt
-    from movierating
-    where to_char(created_at, 'MM-YYYY') = '02-2020'
-    group by movie_id
-)
-
-select min(users.name) as results
-from cts 
-join users on cts.user_id = users.user_id
-where cts.cnt = (select max(cnt) from cts)
+(select u.name as results
+from movierating mr
+join users u on mr.user_id = u.user_id
+group by u.name
+order by count(*) desc, u.name
+limit 1)
 
 union all
 
-select min(mv.title) as results
-from feb_ratings fr
-join movies mv on fr.movie_id = mv.movie_id
-where fr.rt = (select max(rt) from feb_ratings)
+(select m.title as results
+from movierating mr
+join movies m on mr.movie_id = m.movie_id
+where to_char(mr.created_at, 'YYYY-MM') = '2020-02'
+group by m.title
+order by avg(mr.rating) desc, m.title
+limit 1)
