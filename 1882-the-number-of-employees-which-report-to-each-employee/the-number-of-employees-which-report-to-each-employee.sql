@@ -1,11 +1,11 @@
 with managers as (
-    select age, reports_to 
+     select reports_to, count(*) as reports_count, round(avg(age)) as average_age
     from employees
     where reports_to is not null
+    group by reports_to
 )
 
-select e.employee_id, e.name, count(*) as reports_count, round(avg(m.age)) as average_age
-from employees e
-join managers m on m.reports_to = e.employee_id
-group by e.employee_id, e.name
+select e.employee_id, e.name, m.reports_count, m.average_age
+from managers m
+join employees e on m.reports_to = e.employee_id
 order by employee_id
