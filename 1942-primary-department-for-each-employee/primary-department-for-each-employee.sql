@@ -4,7 +4,13 @@ with dept_count as (
     group by employee_id
 )
 
-select dc.employee_id, e.department_id
-from dept_count dc
-join employee e on dc.employee_id = e.employee_id
-where (dc.cnt = 1 or e.primary_flag = 'Y')
+(select e.employee_id, e.department_id
+from employee e
+join dept_count dc on e.employee_id = dc.employee_id and dc.cnt > 1 and e.primary_flag = 'Y'
+
+union
+
+select e.employee_id, e.department_id
+from employee e
+join dept_count dc on e.employee_id = dc.employee_id and dc.cnt = 1)
+order by employee_id
