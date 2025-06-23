@@ -3,8 +3,7 @@ class Solution:
         nums_dict = {}
 
         for num in nums:
-            digits = [int(dig) for dig in str(num)]
-            max_dig = max(digits)
+            max_dig = max(str(num))
             if max_dig in nums_dict:
                 nums_dict[max_dig].append(num)
             else:
