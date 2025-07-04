@@ -5,8 +5,10 @@ class Solution:
 
         nums.sort()
         check = sum(nums[:3])
+        if check == target:
+            return check
         
-        for i in range(len(nums)-2):
+        for i in range(len(nums) - 2):
             l = i + 1
             r = len(nums) - 1
             while l < r:
