@@ -3,35 +3,24 @@ class Solution:
         if len(nums) == 3:
             return sum(nums)
 
-        final = 0
-        check = float('inf')
         nums.sort()
+        check = sum(nums[:3])
         
-        for i, num in enumerate(nums):
-            if i > 0 and nums[i] == nums[i - 1]:
-                continue
+        for i in range(len(nums)-2):
             l = i + 1
             r = len(nums) - 1
             while l < r:
-                if nums[l] + nums[r] + num == target:
-                    return target
-                elif nums[l] + nums[r] + num < target:
-                    if abs(nums[l] + nums[r] + num - target) < check:   
-                        check = abs(nums[l] + nums[r] + num - target)
-                        final = nums[l] + nums[r] + num
-
+                curr_sum = nums[i] + nums[l] + nums[r]
+                if abs(curr_sum - target) < abs(check - target):
+                    check = curr_sum
+                
+                if curr_sum == target:
+                    return curr_sum
+                elif curr_sum < target:
                     l += 1
-                    while nums[l] == nums[l - 1] and l < r:
-                        l += 1
                 else:
-                    if abs(nums[l] + nums[r] + num - target) < check:   
-                        check = abs(nums[l] + nums[r] + num - target)
-                        final = nums[l] + nums[r] + num
-
                     r -= 1
-                    while nums[r] == nums[r + 1] and l < r:
-                        r -= 1
         
-        return final
+        return check
 
                 
