@@ -39,7 +39,7 @@ class Solution:
                 if nums[l] + nums[r] == target:
                     final.append([num, nums[l], nums[r]])
                     l += 1
-                    r -= 1
+                    #r -= 1
 
                     while nums[l] == nums[l - 1] and l < r:
                         l += 1
