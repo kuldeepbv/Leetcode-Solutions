@@ -4,13 +4,16 @@ class Solution:
             return False
 
         x = str(x)
-        l = 0
-        r = len(x) - 1
-        
-        while l < r:
-            if int(x[l]) != int(x[r]):
-                return False
-            l += 1
-            r -= 1
 
-        return True
+        return x == x[::-1]
+
+        # l = 0
+        # r = len(x) - 1
+        
+        # while l < r:
+        #     if int(x[l]) != int(x[r]):
+        #         return False
+        #     l += 1
+        #     r -= 1
+
+        # return True
