@@ -3,12 +3,8 @@ class Solution:
         final = []
         for word in words:
             temp = word.split(separator)
-            final += temp
-
-        ans = []
+            for w in temp:
+                if w:
+                    final.append(w)
         
-        for f in final:
-            if f:
-                ans.append(f)
-        
-        return ans
+        return final
