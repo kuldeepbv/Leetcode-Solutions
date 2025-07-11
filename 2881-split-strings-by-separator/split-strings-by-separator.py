@@ -1,10 +1,12 @@
 class Solution:
     def splitWordsBySeparator(self, words: List[str], separator: str) -> List[str]:
-        final = []
-        for word in words:
-            temp = word.split(separator)
-            for w in temp:
-                if w:
-                    final.append(w)
-        
+        final = [w for word in words for w in word.split(separator) if w]
         return final
+
+        # final = []
+        # for word in words:
+        #     for w in word.split(separator):
+        #         if w:
+        #             final.append(w)
+        
+        # return final
