@@ -8,7 +8,7 @@ class Solution:
         ans = []
         
         for f in final:
-            if f != '':
+            if f:
                 ans.append(f)
         
         return ans
