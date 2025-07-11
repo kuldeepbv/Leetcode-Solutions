@@ -5,13 +5,15 @@ class Solution:
             if num == key:
                 j.append(i)
 
-        j_ind = 0
         ans = []
-        while j_ind < len(j):
-            temp = []
-            for i in range(len(nums)):
-                if abs(i - j[j_ind]) <= k:
-                    temp.append(i)
-            j_ind += 1
-            ans += temp
-        return list(set(ans))
+
+        for i in range(len(nums)):
+            flag = False
+            for j_ind in j:
+                if abs(i - j_ind) <= k:
+                    flag = True
+                    break
+            if flag:
+                ans.append(i)
+
+        return ans
