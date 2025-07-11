@@ -23,5 +23,4 @@ class Solution:
                 ans[i] = odd_ind[oi]
                 oi += 1
             
-
         return ans
