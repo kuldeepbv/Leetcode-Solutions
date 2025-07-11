@@ -3,10 +3,12 @@ class Solution:
         final = []
         for word in words:
             temp = word.split(separator)
-            for t in temp:
-                if t != '':
-                    final.append(t)
+            final += temp
 
-            #print(final)
-            #final = final + word.split(separator)
-        return final
+        ans = []
+        
+        for f in final:
+            if f != '':
+                ans.append(f)
+        
+        return ans
