@@ -1,8 +1,6 @@
 class Solution:
     def similarPairs(self, words: List[str]) -> int:
-        set_words = []
-        for word in words:
-            set_words.append(sorted(list(set(word))))
+        set_words = [set(word) for word in words]
         
         ans = 0
 
